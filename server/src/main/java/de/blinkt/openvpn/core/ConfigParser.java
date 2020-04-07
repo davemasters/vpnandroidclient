@@ -800,7 +800,8 @@ public class ConfigParser {
 
     private boolean isUdpProto(String proto) throws ConfigParseError {
         boolean isudp;
-        if (proto.equals("udp") || proto.equals("udp6"))
+        if (proto.toLowerCase().startsWith("udp"))
+            // REMOVED BY DAVE  if (proto.equals("udp") || proto.equals("udp6"))
             isudp = true;
         else if (proto.equals("tcp-client") ||
                 proto.equals("tcp") ||

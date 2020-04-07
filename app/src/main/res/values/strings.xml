@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">DEMO</string>
-    <string name="safecalls">#datafree DRIVER Connect</string>
-    <string name="credits">BOLT Driver</string>
-    <string name="vpn_safecalls">Go #datafree</string>
-    <string name="vpn_safecalls1">Unused</string>
+    <string name="app_name">biNu VPN POC</string>
+    <string name="safecalls">#datafree Connect DM</string>
+    <string name="credits">biNu VPN POC</string>
+    <string name="vpn_safecalls">Not used</string>
+    <string name="vpn_safecalls1">Systest VPN</string>
     <string name="vpn">VPN</string>
 </resources>

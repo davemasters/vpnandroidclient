@@ -16,7 +16,7 @@
         <TextView
             style="@style/viewParent.headerText"
             android:text="@string/safecalls"
-            tools:text="BOLT Driver #datafree" />
+            tools:text="#datafree VPN Client - POC" />
 
         <TextView
             style="@style/viewParent.headerText.settingsMiniTitle"
@@ -25,13 +25,13 @@
         <Switch
             android:id="@+id/singapore"
             style="@style/settingsText"
-            android:drawableLeft="@drawable/ic_singapore"
+            android:drawableLeft="@drawable/ic_datafree48"
             android:text="@string/vpn_safecalls" />
 
         <Switch
             android:id="@+id/france"
             style="@style/settingsText"
-            android:drawableLeft="@drawable/ic_france"
+            android:drawableLeft="@drawable/ic_datafree48"
             android:text="@string/vpn_safecalls1" />
 
         <TextView

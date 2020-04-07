@@ -30,6 +30,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.ParcelFileDescriptor;
 import android.preference.PreferenceManager;
+import android.support.annotation.RequiresApi;
 import android.system.OsConstants;
 import android.text.TextUtils;
 import android.util.Log;
@@ -572,6 +573,7 @@ public class OpenVPNService extends VpnService implements StateListener, Callbac
         return cfg;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public ParcelFileDescriptor openTun() {
 
         //Debug.startMethodTracing(getExternalFilesDir(null).toString() + "/opentun.trace", 40* 1024 * 1024);
@@ -709,6 +711,30 @@ public class OpenVPNService extends VpnService implements StateListener, Callbac
         mDomain = null;
 
         builder.setConfigureIntent(getLogPendingIntent());
+
+
+        // The apps that will have access to the VPN.
+        String[] appPackages = {
+                "com.microsoft.teams",
+                "com.netflix.mediaclient",
+                "com.microsoft.office.word"};
+
+// Loop through the app packages in the array and confirm that the app is
+// installed before adding the app to the allowed list.
+        //VpnService.Builder vbuilder = new VpnService.Builder();
+        builder.allowBypass();
+        PackageManager packageManager = getPackageManager();
+        for (String appPackage: appPackages) {
+            Log.v("try",appPackage);
+            try {
+                packageManager.getPackageInfo(appPackage, 0);
+                builder.addAllowedApplication(appPackage);
+                Log.v("Allowed",appPackage);
+            } catch (PackageManager.NameNotFoundException e) {
+                // The app isn't installed.
+                Log.v("rej",appPackage);
+            }
+        }
 
         try {
             //Debug.stopMethodTracing();
